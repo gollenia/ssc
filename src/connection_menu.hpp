@@ -10,7 +10,7 @@ using namespace ftxui;
 
 Component ConnectionMenu(std::vector<std::string>* entries, int* selected) {
 	auto option = MenuOption::Vertical();
-	option.entries.transform = [](EntryState state) {
+	option.entries_option.transform = [](EntryState state) {
 		std::vector<std::string> labelArray = StringHelpers::split(state.label, '|');
 		std::string numberColumn = (std::stoi(labelArray[0]) < 10 ? labelArray[0] + "  " : labelArray[0] + " ");
 		Element e = hbox({
