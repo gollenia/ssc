@@ -6,9 +6,14 @@ include(FetchContent)
  
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
 
+IF(APPLE)
+    # Fix linking on 10.14+. See https://stackoverflow.com/questions/54068035
+    LINK_DIRECTORIES(/opt/homebrew/lib)
+ENDIF()
+
 FetchContent_Declare(ftxui
   GIT_REPOSITORY https://github.com/ArthurSonzogni/ftxui
-  # Important: Specify a GIT_TAG XXXXX here.
+  GIT_TAG main 
 )
 
 find_package(PkgConfig REQUIRED)
